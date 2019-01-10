@@ -1,4 +1,4 @@
-Entity\User:
+App\Entity\User:
     type: entity
     table: fos_user
     uniqueConstraints:
