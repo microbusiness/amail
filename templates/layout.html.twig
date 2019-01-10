@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block layout %}
+    {% include 'header.html.twig' %}
+    <div id="page-wrapper">
+        <div class="container-fluid">
+                {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

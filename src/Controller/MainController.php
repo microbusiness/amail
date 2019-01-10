@@ -9,9 +9,6 @@ class MainController extends AbstractController
 {
     public function index()
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/MainController.php',
-        ]);
+        return $this->render('main/index.html.twig');
     }
 }
