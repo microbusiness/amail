@@ -1,0 +1,37 @@
+Entity\User:
+    type: entity
+    table: fos_user
+    repositoryClass: UserBundle\Repository\UserRepository
+    uniqueConstraints:
+        UNIQ_957A647992FC23A8:
+            columns:
+                - username_canonical
+        UNIQ_957A6479A0D96FBF:
+            columns:
+                - email_canonical
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        fullname:
+            type: string
+            nullable: true
+        phone:
+            type: string
+            nullable: true
+        locked:
+            type: boolean
+            nullable: false
+        expired:
+            type: boolean
+            nullable: false
+        credentialsExpired:
+            type: boolean
+            nullable: false
+            column: credentials_expired
