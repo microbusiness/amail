@@ -1,7 +1,6 @@
 Entity\User:
     type: entity
     table: fos_user
-    repositoryClass: UserBundle\Repository\UserRepository
     uniqueConstraints:
         UNIQ_957A647992FC23A8:
             columns:
