@@ -77,7 +77,7 @@ class AuthApiV1Service
             try {
                 $sql = "insert into external_service ";
                 $sql.= " (apikey, ip, username, username_canonical, email, email_canonical, enabled, salt, password, last_login, locked, expired, expires_at, confirmation_token, password_requested_at, roles, credentials_expired, credentials_expire_at,created_at,updated_at) ";
-                $sql.= " values(:apikey,:ip,:username, :username, :email, :email, false, '', '', '2000-01-01 00:00:00.000', false, false, NULL, NULL, NULL, 'a:0:{}', false, NULL,:now,:now) returning id ";
+                $sql.= " values(:apikey,:ip,:username, :username, :email, :email, false, '', '', '2000-01-01 00:00:00.000', false, false, NULL, NULL, NULL, 'a:0:{}', false, NULL,:now,:now) returning apikey ";
                 $stmt = $this->conn->prepare($sql);
                 $stmt->bindValue('apikey',$realData['apikey']);
                 $stmt->bindValue('username',$realData['username']);
@@ -91,7 +91,7 @@ class AuthApiV1Service
                     $remoteUserId = $row['id'];
                 }
                 $this->conn->commit();
-                $result = $remoteUserId;
+                $result->setData(['apikey'=>$remoteUserId]);
             } catch (\Exception $e) {
                 $this->conn->rollBack();
                 $result->setBadMessage('Unsuccessful json decoded data');
