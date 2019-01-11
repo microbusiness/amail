@@ -88,7 +88,7 @@ class AuthApiV1Service
                 $remoteUserId = false;
                 while ($row = $stmt->fetch())
                 {
-                    $remoteUserId = $row['id'];
+                    $remoteUserId = $row['apikey'];
                 }
                 $this->conn->commit();
                 $result->setData(['apikey'=>$remoteUserId]);
