@@ -1,5 +1,6 @@
 {% extends 'layout.html.twig' %}
 
+{#{% form_theme form 'bootstrap_4_layout.html.twig' %}#}
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block content %}
@@ -23,7 +24,7 @@
                 </div>
 
                 <div class="checkbox">
-                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <input class="checkbox-custom" type="checkbox" id="remember_me" name="_remember_me" value="on" />
                     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                 </div>
 

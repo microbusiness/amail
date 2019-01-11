@@ -1,0 +1,3 @@
+registr_external_service:
+    path: /registr_ext_service
+    controller: App\Controller\UserController::registrExternalService

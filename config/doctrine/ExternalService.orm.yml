@@ -1,0 +1,34 @@
+App\Entity\ExternalService:
+    type: entity
+    table: external_service
+    #repositoryClass: UserBundle\Repository\ExternalServiceRepository
+    uniqueConstraints:
+        UNIQ_external_service_username_canonical:
+            columns:
+                - username_canonical
+        UNIQ_external_service_email_canonical:
+            columns:
+                - email_canonical
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        apikey:
+            type: string
+            nullable: false
+        locked:
+            type: boolean
+            nullable: false
+        expired:
+            type: boolean
+            nullable: false
+        credentialsExpired:
+            type: boolean
+            nullable: false
+            column: credentials_expired
