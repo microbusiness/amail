@@ -94,7 +94,7 @@ class AuthApiV1Service
                 $result->setData(['apikey'=>$remoteUserId]);
             } catch (\Exception $e) {
                 $this->conn->rollBack();
-                $result->setBadMessage('Unsuccessful json decoded data');
+                $result->setBadMessage('Unsuccessful sql query execute. '.$e->getMessage());
             }
         }
         return $result;
