@@ -20,8 +20,16 @@ class ParamList
     {
         $this->templateList=new ArrayCollection();
         $this->list=new ArrayCollection();
-
+        // @todo remove from code
         $this->templateList->set('aeskey','');
+        $this->templateList->set('mailer_transport','');
+        $this->templateList->set('mailer_port','');
+        $this->templateList->set('mailer_host','');
+        $this->templateList->set('mailer_user','');
+        $this->templateList->set('mailer_password','');
+        $this->templateList->set('mailer_encryption','');
+        $this->templateList->set('sender_email','');
+        $this->templateList->set('copy_email','');
     }
 
     public function getParam($code)

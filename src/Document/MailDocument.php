@@ -16,14 +16,53 @@ class MailDocument
     private $subject;
     private $senderEmail;
     private $email;
+    private $mailCopyList;
     private $mailList;
     private $bodyData;
     private $imageList;
+    /**
+     * @var \App\Document\MailTransport
+     */
+    private $mailTransport;
 
-    public function __construct()
+    public function __construct(MailTransport $mailTransport)
     {
+        $this->mailTransport=$mailTransport;
         $this->mailList=new ArrayCollection();
         $this->imageList=new ArrayCollection();
+        $this->mailCopyList=new ArrayCollection();
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getMailCopyList(): \Doctrine\Common\Collections\ArrayCollection
+    {
+        return $this->mailCopyList;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $mailCopyList
+     */
+    public function setMailCopyList(\Doctrine\Common\Collections\ArrayCollection $mailCopyList): void
+    {
+        $this->mailCopyList = $mailCopyList;
+    }
+
+    /**
+     * @param \App\Document\MailTransport $mailTransport
+     */
+    public function setMailTransport(\App\Document\MailTransport $mailTransport): void
+    {
+        $this->mailTransport = $mailTransport;
+    }
+
+    /**
+     * @return \App\Document\MailTransport
+     */
+    public function getMailTransport(): \App\Document\MailTransport
+    {
+        return $this->mailTransport;
     }
 
     /**
@@ -136,5 +175,11 @@ class MailDocument
     public function setImageList(\Doctrine\Common\Collections\ArrayCollection $imageList): void
     {
         $this->imageList = $imageList;
+    }
+
+    //-----------------------
+    public function getPropertyList()
+    {
+        return array_keys(get_object_vars($this));
     }
 }

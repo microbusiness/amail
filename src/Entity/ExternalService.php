@@ -18,6 +18,16 @@ class ExternalService extends BaseUser
 
     protected $apikey;
 
+    protected $expiresAt;
+
+    protected $createdAt;
+
+    protected $updatedAt;
+
+    protected $credentialsExpireAt;
+
+    protected $ip;
+
     public function setSalt($salt)
     {
         if ($salt===null)
@@ -111,6 +121,71 @@ class ExternalService extends BaseUser
     public function setApikey($apikey): void
     {
         $this->apikey = $apikey;
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getExpiresAt(): ?\DateTimeInterface
+    {
+        return $this->expiresAt;
+    }
+
+    public function setExpiresAt(?\DateTimeInterface $expiresAt): self
+    {
+        $this->expiresAt = $expiresAt;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getCredentialsExpireAt(): ?\DateTimeInterface
+    {
+        return $this->credentialsExpireAt;
+    }
+
+    public function setCredentialsExpireAt(?\DateTimeInterface $credentialsExpireAt): self
+    {
+        $this->credentialsExpireAt = $credentialsExpireAt;
+
+        return $this;
+    }
+
+    public function getIp(): ?string
+    {
+        return $this->ip;
+    }
+
+    public function setIp(?string $ip): self
+    {
+        $this->ip = $ip;
+
+        return $this;
     }
 
 }

@@ -33,12 +33,9 @@ class ApiKeyExtAuthenticator extends AbstractGuardAuthenticator implements Authe
         {
             $apiKey = $request->headers->get('X-AUTH-TOKEN');
         }
-
-
         if (!$apiKey) {
             throw new BadCredentialsException();
         }
-
         return new PreAuthenticatedToken(
           'anon.',
           $apiKey,

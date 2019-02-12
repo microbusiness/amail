@@ -1,0 +1,26 @@
+App\Entity\SystemParams:
+    type: entity
+    table: system_params
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        code:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+        val:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }

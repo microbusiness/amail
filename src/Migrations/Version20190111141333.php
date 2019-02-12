@@ -21,15 +21,21 @@ final class Version20190111141333 extends AbstractMigration
         $table = $schema->createTable('mail_job');
         $table->addColumn('id','integer', array('autoincrement' => true));
         $table->addColumn('mail_job_status_id','integer');
+        $table->addColumn('external_service_id','integer');
         $table->addColumn('email','string');
         $table->addColumn('subject','string');
         $table->addColumn('sender_email','string');
         $table->addColumn('body_data','text');
         $table->addColumn('template','text');
+        $table->addColumn('transport','text');
+        $table->addColumn('mail_list','text');
+        $table->addColumn('mail_copy','text');
+        $table->addColumn('image_list','text');
         $table->addColumn('created_at','datetime');
         $table->addColumn('updated_at','datetime');
         $table->setPrimaryKey(array('id'));
         $table->addForeignKeyConstraint($schema->getTable('mail_job_status'), array('mail_job_status_id'), array('id'), array('NO ACTION', 'RESTRICT'),'fk_mail_job_mail_job_status');
+        $table->addForeignKeyConstraint($schema->getTable('external_service'), array('external_service_id'), array('id'), array('NO ACTION', 'RESTRICT'),'fk_mail_job_external_service');
 
 
     }
@@ -47,15 +53,15 @@ final class Version20190111141333 extends AbstractMigration
     {
         $conn = $this->connection;
 
-        $sql = "INSERT INTO mail_job_status (name, code) VALUES ('new', 'Новый') ";
+        $sql = "INSERT INTO mail_job_status (code,name) VALUES ('new', 'Новый') ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $sql = "INSERT INTO mail_job_status (name, code) VALUES ('process', 'В процессе') ";
+        $sql = "INSERT INTO mail_job_status (code,name) VALUES ('process', 'В процессе') ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 
-        $sql = "INSERT INTO mail_job_status (name, code) VALUES ('complete', 'Отослано') ";
+        $sql = "INSERT INTO mail_job_status (code,name) VALUES ('complete', 'Отослано') ";
         $stmt = $conn->prepare($sql);
         $stmt->execute();
 

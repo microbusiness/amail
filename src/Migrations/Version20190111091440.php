@@ -15,7 +15,7 @@ final class Version20190111091440 extends AbstractMigration
         $table = $schema->createTable('system_params');
         $table->addColumn('id','integer', array('autoincrement' => true));
         $table->addColumn('code','string');
-        $table->addColumn('val','string');
+        $table->addColumn('data','text');
         $table->setPrimaryKey(array('id'));
     }
 

@@ -338,4 +338,24 @@ class User extends BaseUser
         $this->roles = $roles;
     }
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getLocked(): ?bool
+    {
+        return $this->locked;
+    }
+
+    public function getExpired(): ?bool
+    {
+        return $this->expired;
+    }
+
+    public function getCredentialsExpired(): ?bool
+    {
+        return $this->credentialsExpired;
+    }
+
 }

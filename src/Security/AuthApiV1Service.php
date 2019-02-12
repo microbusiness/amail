@@ -71,6 +71,21 @@ class AuthApiV1Service
             }
         }
 
+        if ($result->isStatus())
+        {
+            $sql = "select id from external_service where apikey=:apikey ";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue('apikey',$realData['apikey']);
+            $stmt->execute();
+            $externalServiceId=false;
+            while ($row = $stmt->fetch()) {
+                $externalServiceId=$row['id'];
+            }
+            if ($externalServiceId) {
+                $result->setBadMessage('Service with apikey '.$realData['apikey'].' already exist');
+            }
+        }
+
         if ($result->isStatus()) {
             $now=new DateTime();
             $this->conn->beginTransaction();

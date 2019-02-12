@@ -1,12 +1,11 @@
 App\Entity\ExternalService:
     type: entity
     table: external_service
-    #repositoryClass: UserBundle\Repository\ExternalServiceRepository
     uniqueConstraints:
-        UNIQ_external_service_username_canonical:
+        uniq_external_service_username_canonical:
             columns:
                 - username_canonical
-        UNIQ_external_service_email_canonical:
+        uniq_external_service_email_canonical:
             columns:
                 - email_canonical
     id:
@@ -17,18 +16,44 @@ App\Entity\ExternalService:
                 unsigned: false
             id: true
             generator:
-                strategy: IDENTITY
+                strategy: SEQUENCE
     fields:
-        apikey:
-            type: string
-            nullable: false
         locked:
             type: boolean
             nullable: false
         expired:
             type: boolean
             nullable: false
+        expiresAt:
+            type: datetime
+            nullable: true
+            column: expires_at
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
         credentialsExpired:
             type: boolean
             nullable: false
             column: credentials_expired
+        credentialsExpireAt:
+            type: datetime
+            nullable: true
+            column: credentials_expire_at
+        apikey:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        ip:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    lifecycleCallbacks: {  }
